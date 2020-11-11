@@ -1,0 +1,338 @@
+{% extends 'base.html' %}   
+{% load static %}
+
+{% block title %}
+
+Interserver | Getting started
+
+{% endblock title %}
+
+{% block content %}
+    <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
+        <a class="navbar-brand" href="{% url 'home' %}">Interserver Dashboard</a>
+        <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
+        <form class="form-inline mr-auto d-none d-md-block">
+            <div class="input-group input-group-joined input-group-solid">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search our knowledge base" aria-label="Search" />
+                <div class="input-group-append">
+                    <div class="input-group-text"><i data-feather="search"></i></div>
+                </div>
+            </div>
+        </form>
+            
+        <ul class="navbar-nav align-items-center ml-auto">
+            <li class="nav-item dropdown no-caret mr-3 d-none d-md-inline">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="d-none d-md-inline font-weight-500">Knowledge Base</div>
+                    <i class="fas fa-chevron-right dropdown-arrow"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right py-0 mr-sm-n15 mr-lg-0 o-hidden animated--fade-in-up" aria-labelledby="navbarDropdownDocs">
+                    <a class="dropdown-item py-3" href="{% url 'knowledge-article' %}">
+                        <div class="icon-stack bg-primary-soft text-primary mr-4"><i data-feather="book"></i></div>
+                        <div>
+                            <div class="small text-gray-500"> Knowledge Base</div>
+                            View Latest Article
+                        </div>
+                    </a>
+                    <div class="dropdown-divider m-0"></div>
+                    <a class="dropdown-item py-3" href="{% url 'knowledge' %}">
+                        <div class="icon-stack bg-primary-soft text-primary mr-4"><i data-feather="code"></i></div>
+                        <div>
+                            <div class="small text-gray-500">Latest Questions</div>
+                            View latest questions
+                        </div>
+                    </a>
+                    <div class="dropdown-divider m-0"></div>
+                    <a class="dropdown-item py-3" href="#!" >
+                        <div class="icon-stack bg-primary-soft text-primary mr-4"><i data-feather="file-text"></i></div>
+                        <div>
+                            <div class="small text-gray-500">Changelog</div>
+                            Updates and changes
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item dropdown no-caret mr-3 d-md-none">
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="searchDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="search"></i></a>
+                <!-- Dropdown - Search-->
+                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--fade-in-up" aria-labelledby="searchDropdown">
+                    <form class="form-inline mr-auto w-100">
+                        <div class="input-group input-group-joined input-group-solid">
+                            <input class="form-control" type="text" placeholder="Search our knowledge base" aria-label="Search" aria-describedby="basic-addon2" />
+                            <div class="input-group-append">
+                                <div class="input-group-text"><i data-feather="search"></i></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" title="Notifications" id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="bell"></i></a>
+                <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownAlerts">
+                    <h6 class="dropdown-header dropdown-notifications-header">
+                        <i class="mr-2" data-feather="bell"></i>
+                        Alerts Center
+                    </h6>
+                    <a class="dropdown-item dropdown-notifications-item" href="#!">
+                        <div class="dropdown-notifications-item-icon bg-warning"><i data-feather="activity"></i></div>
+                        <div class="dropdown-notifications-item-content">
+                            <div class="dropdown-notifications-item-content-details">November 8, 2020</div>
+                            <div class="dropdown-notifications-item-content-text">This is an alert message. It&apos;s nothing serious, but it requires your attention.</div>
+                        </div>
+                    </a>
+                    <a class="dropdown-item dropdown-notifications-item" href="#!">
+                        <div class="dropdown-notifications-item-icon bg-info"><i data-feather="bar-chart"></i></div>
+                        <div class="dropdown-notifications-item-content">
+                            <div class="dropdown-notifications-item-content-details">November 8, 2020</div>
+                            <div class="dropdown-notifications-item-content-text">A new monthly report is ready. Click here to view!</div>
+                        </div>
+                    </a>
+                    
+                    <a class="dropdown-item dropdown-notifications-footer text-primary" href="#!">View All Alerts</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="javascript:void(0);" role="button" title="Start Live Chat" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="message-square"></i></a>
+                <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownMessages">
+                    <h6 class="dropdown-header dropdown-notifications-header">
+                        <i class="mr-2" data-feather="message-square"></i>
+                        Message Center
+                    </h6>
+                    <a class="dropdown-item dropdown-notifications-item" href="#!">
+                        <img class="dropdown-notifications-item-img" src="{% static 'assets/img/profile-6.png' %}" />
+                        <div class="dropdown-notifications-item-content">
+                            <div class="dropdown-notifications-item-content-text">Your payment is overdue settle it today and avoid losing your information.</div>
+                            <div class="dropdown-notifications-item-content-details">Interserver Admin &#xB7; 58m</div>
+                        </div>
+                    </a>
+                    <a class="dropdown-item dropdown-notifications-item" href="#!">
+                        <img class="dropdown-notifications-item-img" src="{% static 'assets/img/profile-5.png' %}" />
+                        <div class="dropdown-notifications-item-content">
+                            <div class="dropdown-notifications-item-content-text">Your last chat transcript has been sent to your email.</div>
+                            <div class="dropdown-notifications-item-content-details">Inerserver Support &#xB7; 2d</div>
+                        </div>
+                    </a>
+                    <a class="dropdown-item dropdown-notifications-footer" href="#!">Read All Messages</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown no-caret mr-2 dropdown-user">
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" title="My Profile" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="{% static 'assets/img/profile-2.png' %}"/></a>
+                <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
+                    <h6 class="dropdown-header d-flex align-items-center" title="My Profile">
+                        <img class="dropdown-user-img" src="{% static 'assets/img/profile-2.png' %}" />
+                        <div class="dropdown-user-details">
+                            <div class="dropdown-user-details-name">Bukhosi Moyo</div>
+                            <div class="dropdown-user-details-email">bukhosi@interserver.net</div>
+                        </div>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#!">
+                        <div class="dropdown-item-icon"><i data-feather="user"></i></div>
+                        Profile
+                    </a>
+                    <a class="dropdown-item" href="#!">
+                        <div class="dropdown-item-icon"><i data-feather="send"></i></div>
+                        Request Migration
+                    </a>
+                    <a class="dropdown-item" href="#!">
+                        <div class="dropdown-item-icon"><i data-feather="info"></i></div>
+                        Support Articles
+                    </a>
+                    <a class="dropdown-item" href="#!">
+                        <div class="dropdown-item-icon"><i data-feather="compass"></i></div>
+                        Interserver.net
+                    </a>
+                    <a class="dropdown-item" href="{% url 'login' %}">
+                        <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
+                        Logout
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav">
+            <nav class="sidenav shadow-right sidenav-light">
+                <div class="sidenav-menu overflow-auto">
+                    <div class="nav accordion" id="accordionSidenav">
+                        <div class="sidenav-menu-heading">Dashboard</div>
+                        <a class="nav-link collapsed" href="{% url 'home' %}"  aria-expanded="false" aria-controls="collapseDashboards">
+                            <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                            Overview
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        <a class="nav-link collapsed" href="javascript:void(0);"  aria-expanded="false" aria-controls="collapsePages">
+                            <div class="nav-link-icon"><i data-feather="grid"></i></div>
+                            Domains
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        
+                        <a class="nav-link collapsed" href="javascript:void(0);"  aria-expanded="false" aria-controls="collapseFlows">
+                            <div class="nav-link-icon"><i data-feather="repeat"></i></div>
+                            Vps
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseFlows" aria-expanded="false" aria-controls="collapseFlows">
+                            <div class="nav-link-icon"><i data-feather="database"></i></div>
+                            Storage
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseFlows" data-parent="#accordionSidenav">
+                            <nav class="sidenav-menu-nested nav">
+                                <a class="nav-link" href="multi-tenant-select.html">View Storage</a>
+                                <a class="nav-link" href="wizard.html">Buy Storage</a>
+                                <a class="nav-link" href="wizard.html">Buy Acronis Backup</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="#!" data-toggle="collapse"  aria-expanded="false" aria-controls="collapseFlows">
+                            <div class="nav-link-icon"><i data-feather="mail"></i></div>
+                            Mail 
+                            <span class="badge badge-primary-soft text-primary ml-auto">New</span>
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        <a class="nav-link collapsed" href="#!" data-toggle="collapse" aria-expanded="false" aria-controls="collapseFlows">
+                            <div class="nav-link-icon"><i data-feather="cloud"></i></div>
+                            Web Hosting
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse"  aria-expanded="false" aria-controls="collapseFlows">
+                            <div class="nav-link-icon"><i data-feather="upload-cloud"></i></div>
+                            Rapid Deploy servers
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse"  aria-expanded="false" aria-controls="collapseFlows">
+                            <div class="nav-link-icon"><i data-feather="server"></i></div>
+                            Servers
+                            <span class="badge badge-primary-soft text-primary ml-auto">Updated</span>
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseComponents" aria-expanded="false" aria-controls="collapseComponents">
+                            <div class="nav-link-icon"><i data-feather="package"></i></div>
+                            More
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseComponents" data-parent="#accordionSidenav">
+                            <nav class="sidenav-menu-nested nav">
+                                <a class="nav-link" href="#">DNS Manager</a>
+                                <a class="nav-link" href="#">Licences</a>
+                                <a class="nav-link" href="#">SSL</a>
+                                <a class="nav-link" href="#">Affiliate System</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="javascript:void(0);"  aria-expanded="false" aria-controls="collapseFlows">
+                            <div class="nav-link-icon"><i data-feather="credit-card"></i></div>
+                            Billing 
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        <a class="nav-link collapsed" href="javascript:void(0);"  aria-expanded="false" aria-controls="collapseFlows">
+                            <div class="nav-link-icon"><i data-feather="settings"></i></div>
+                            Settings 
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        <a class="nav-link collapsed" href="javascript:void(0);" aria-expanded="false" aria-controls="collapseFlows">
+                            <div class="nav-link-icon"><i data-feather="phone"></i></div>
+                            Support
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        
+                    </div>
+                </div>
+                <div class="sidenav-footer">
+                    <div class="sidenav-footer-content">
+                        <div class="sidenav-footer-subtitle">Logged in as:</div>
+                        <div class="sidenav-footer-title">Bukhosi Moyo</div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <header class="page-header page-header-dark bg-gradient-primary-to-secondary mb-4">
+                    <div class="container">
+                        <div class="page-header-content pt-4">
+                            <div class="row align-items-center justify-content-between">
+                                <div class="col-auto mt-4">
+                                    <h1 class="page-header-title">
+                                        <div class="page-header-icon"><i data-feather="life-buoy"></i></div>
+                                        Knowledge Base
+                                    </h1>
+                                    <div class="page-header-subtitle">What are you looking for? Our knowledge base is here to help.</div>
+                                </div>
+                            </div>
+                            <div class="page-header-search mt-4">
+                                <div class="input-group input-group-joined">
+                                    <input class="form-control" type="text" placeholder="Search..." aria-label="Search" autofocus />
+                                    <div class="input-group-append">
+                                        <span class="input-group-text"><i data-feather="search"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <!-- Main page content-->
+                <div class="container">
+                    <!-- Knowledge base article-->
+                    <div class="card mb-4">
+                        <div class="card-header d-flex align-items-center">
+                            <a class="btn btn-transparent-dark btn-icon" href="{% url 'knowledge' %}"><i data-feather="arrow-left"></i></a>
+                            <div class="ml-3"><h2 class="my-3">Knowledge base article example</h2></div>
+                        </div>
+                        <div class="card-body">
+                            <p class="lead">Here&apos;s an example of what an article in your knowledge base will look like.</p>
+                            <p class="lead">You can use the paragraph element along with other typography elements and text tools to create articles within your knowledge base. This is a great way to display support information to your users.</p>
+                            <p class="lead">The knowledge base page examples are a great starting point for creating FAQ&apos;s, documentation, and more. In this section, we&apos;re using the lead paragraph class to make the text a bit larger so it&apos;s more legible since it&apos;s meant to be read in sentences.</p>
+                            <p class="lead mb-5">You can also use step-by-step examples in this section:</p>
+                            <h4>Step 1: Start the process</h4>
+                            <p class="lead mb-4">Here is some example text of a longer version of a first step. This format is great when you need to explain things more, not just using a ordered list.</p>
+                            <h4>Step 2: Continue doing something</h4>
+                            <p class="lead mb-4">We&apos;re using built-in elements and text utilities to make this list more legible and understandable. This is a great starting point for a step by step guide within your knowledge base article.</p>
+                            <h4>Step 3: Finish the process</h4>
+                            <p class="lead mb-5">We&apos;ve used spacing utilities, text utilities, and other components within this article example. This is just an example layout of a few things you can do within an article page. Thanks for reading!</p>
+                            <div class="alert alert-primary alert-icon mb-0" role="alert">
+                                <div class="alert-icon-aside"><i data-feather="alert-triangle"></i></div>
+                                <div class="alert-icon-content">
+                                    <h5 class="alert-heading">Article Alert</h5>
+                                    If there is something in your article that you really want to emphasize, use the alert component, or our custom icon alert component like this one here!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Knowledge base rating-->
+                    <div class="text-center mt-5">
+                        <h4 class="mb-3">Was this page helpful?</h4>
+                        <div class="mb-3">
+                            <button class="btn btn-primary mx-2 px-3" role="button">
+                                <i class="mr-2" data-feather="thumbs-up"></i>
+                                Yes
+                            </button>
+                            <button class="btn btn-primary mx-2 px-3" role="button">
+                                <i class="mr-2" data-feather="thumbs-down"></i>
+                                No
+                            </button>
+                        </div>
+                        <div class="text-small text-muted"><em>29 people found this page helpful so far!</em></div>
+                    </div>
+                </div>
+            </main>
+            <footer class="footer mt-auto footer-light">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 small">Copyright &#xA9; Interserver 2020</div>
+                        <div class="col-md-6 text-md-right small">
+                            <a href="#!">
+                                <span class="text-primary">Do not sell my info</span>
+                            </a>
+                            &#xB7;
+                            <a href="#!">Privacy Policy</a>
+                            &#xB7;
+                            <a href="#!">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+{% endblock %}

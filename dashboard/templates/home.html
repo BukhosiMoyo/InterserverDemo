@@ -1,0 +1,491 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}
+
+Interserver | Dashboard Home 
+
+{% endblock title %}
+
+{% block content %}
+    <nav class="topnav navbar navbar-expand shadow navbar-light bg-white" id="sidenavAccordion">
+        <a class="navbar-brand" href="{% url 'home' %}">Interserver Dashboard</a>
+        <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
+        <form class="form-inline mr-auto d-none d-md-block">
+            <div class="input-group input-group-joined input-group-solid">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search our knowledge base" aria-label="Search" />
+                <div class="input-group-append">
+                    <div class="input-group-text"><i data-feather="search"></i></div>
+                </div>
+            </div>
+        </form>
+        <ul class="navbar-nav align-items-center ml-auto">
+            <li class="nav-item dropdown no-caret mr-3 d-none d-md-inline">
+                <a class="nav-link dropdown-toggle" id="navbarDropdownDocs" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <div class="d-none d-md-inline font-weight-500">Knowledge Base</div>
+                    <i class="fas fa-chevron-right dropdown-arrow"></i>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right py-0 mr-sm-n15 mr-lg-0 o-hidden animated--fade-in-up" aria-labelledby="navbarDropdownDocs">
+                    <a class="dropdown-item py-3" href="{% url 'knowledge-article' %}">
+                        <div class="icon-stack bg-primary-soft text-primary mr-4"><i data-feather="book"></i></div>
+                        <div>
+                            <div class="small text-gray-500"> Knowledge Base</div>
+                            View Latest Article
+                        </div>
+                    </a>
+                    <div class="dropdown-divider m-0"></div>
+                    <a class="dropdown-item py-3" href="{% url 'knowledge' %}" >
+                        <div class="icon-stack bg-primary-soft text-primary mr-4"><i data-feather="code"></i></div>
+                        <div>
+                            <div class="small text-gray-500">Latest Questions</div>
+                            View latest questions
+                        </div>
+                    </a>
+                    <div class="dropdown-divider m-0"></div>
+                    <a class="dropdown-item py-3" href="#!" >
+                        <div class="icon-stack bg-primary-soft text-primary mr-4"><i data-feather="file-text"></i></div>
+                        <div>
+                            <div class="small text-gray-500">Changelog</div>
+                            Updates and changes
+                        </div>
+                    </a>
+                </div>
+            </li>
+            <li class="nav-item dropdown no-caret mr-3 d-md-none">
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="searchDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="search"></i></a>
+                <!-- Dropdown - Search-->
+                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--fade-in-up" aria-labelledby="searchDropdown">
+                    <form class="form-inline mr-auto w-100">
+                        <div class="input-group input-group-joined input-group-solid">
+                            <input class="form-control" type="text" placeholder="Search our knowledge base" aria-label="Search" aria-describedby="basic-addon2" />
+                            <div class="input-group-append">
+                                <div class="input-group-text"><i data-feather="search"></i></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </li>
+            <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" title="Notifications" id="navbarDropdownAlerts" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="bell"></i></a>
+                <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownAlerts">
+                    <h6 class="dropdown-header dropdown-notifications-header">
+                        <i class="mr-2" data-feather="bell"></i>
+                        Alerts Center
+                    </h6>
+                    <a class="dropdown-item dropdown-notifications-item" href="#!">
+                        <div class="dropdown-notifications-item-icon bg-warning"><i data-feather="activity"></i></div>
+                        <div class="dropdown-notifications-item-content">
+                            <div class="dropdown-notifications-item-content-details">November 8, 2020</div>
+                            <div class="dropdown-notifications-item-content-text">This is an alert message. It&apos;s nothing serious, but it requires your attention.</div>
+                        </div>
+                    </a>
+                    <a class="dropdown-item dropdown-notifications-item" href="#!">
+                        <div class="dropdown-notifications-item-icon bg-info"><i data-feather="bar-chart"></i></div>
+                        <div class="dropdown-notifications-item-content">
+                            <div class="dropdown-notifications-item-content-details">November 8, 2020</div>
+                            <div class="dropdown-notifications-item-content-text">A new monthly report is ready. Click here to view!</div>
+                        </div>
+                    </a>
+                    <a class="dropdown-item dropdown-notifications-footer text-primary" href="#!">View All Alerts</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown no-caret mr-3 dropdown-notifications">
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownMessages" href="javascript:void(0);" role="button" title="Start Live Chat" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i data-feather="message-square"></i></a>
+                <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownMessages">
+                    <h6 class="dropdown-header dropdown-notifications-header">
+                        <i class="mr-2" data-feather="message-square"></i>
+                        Message Center
+                    </h6>
+                    <a class="dropdown-item dropdown-notifications-item" href="#!">
+                        <img class="dropdown-notifications-item-img" src="{% static 'assets/img/profile-6.png' %}" />
+                        <div class="dropdown-notifications-item-content">
+                            <div class="dropdown-notifications-item-content-text">Your payment is overdue settle it today and avoid losing your information.</div>
+                            <div class="dropdown-notifications-item-content-details">Interserver Admin &#xB7; 58m</div>
+                        </div>
+                    </a>
+                    <a class="dropdown-item dropdown-notifications-item" href="#!">
+                        <img class="dropdown-notifications-item-img" src="{% static 'assets/img/profile-5.png' %}" />
+                        <div class="dropdown-notifications-item-content">
+                            <div class="dropdown-notifications-item-content-text">Your last chat transcript has been sent to your email.</div>
+                            <div class="dropdown-notifications-item-content-details">Inerserver Support &#xB7; 2d</div>
+                        </div>
+                    </a>
+                    <a class="dropdown-item dropdown-notifications-footer" href="#!">Read All Messages</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown no-caret mr-2 dropdown-user">
+                <a class="btn btn-icon btn-transparent-dark dropdown-toggle" title="My Profile" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="{% static 'assets/img/profile-2.png' %}"/></a>
+                <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
+                    <h6 class="dropdown-header d-flex align-items-center" title="My Profile">
+                        <img class="dropdown-user-img" src="{% static 'assets/img/profile-2.png' %}" />
+                        <div class="dropdown-user-details">
+                            <div class="dropdown-user-details-name">Bukhosi Moyo</div>
+                            <div class="dropdown-user-details-email">bukhosi@interserver.net</div>
+                        </div>
+                    </h6>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#!">
+                        <div class="dropdown-item-icon"><i data-feather="user"></i></div>
+                        Profile
+                    </a>
+                    <a class="dropdown-item" href="#!">
+                        <div class="dropdown-item-icon"><i data-feather="send"></i></div>
+                        Request Migration
+                    </a>
+                    <a class="dropdown-item" href="#!">
+                        <div class="dropdown-item-icon"><i data-feather="info"></i></div>
+                        Support Articles
+                    </a>
+                    <a class="dropdown-item" href="#!">
+                        <div class="dropdown-item-icon"><i data-feather="compass"></i></div>
+                        Interserver.net
+                    </a>
+                    <a class="dropdown-item" href="{% url 'login' %}">
+                        <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
+                        Logout
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </nav>
+    <div id="layoutSidenav">
+        <div id="layoutSidenav_nav" >
+            <nav class="sidenav shadow-right sidenav-light">
+                <div class="sidenav-menu overflow-auto">
+                    <div class="nav accordion" id="accordionSidenav">
+                        <div class="sidenav-menu-heading">Dashboard</div>
+                        <a class="nav-link collapsed" href="{% url 'home' %}" data-toggle="collapse" data-target="#collapseDashboards" aria-expanded="false" aria-controls="collapseDashboards">
+                            <div class="nav-link-icon"><i data-feather="activity"></i></div>
+                            Overview
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+                            <div class="nav-link-icon"><i data-feather="grid"></i></div>
+                            Domains
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        <a class="nav-link collapsed" href="javascript:void(0);" aria-expanded="false" aria-controls="collapseFlows">
+                            <div class="nav-link-icon"><i data-feather="repeat"></i></div>
+                            Vps
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseFlows" aria-expanded="false" aria-controls="collapseFlows">
+                            <div class="nav-link-icon"><i data-feather="database"></i></div>
+                            Storage
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseFlows" data-parent="#accordionSidenav">
+                            <nav class="sidenav-menu-nested nav">
+                                <a class="nav-link" href="multi-tenant-select.html">View Storage</a>
+                                <a class="nav-link" href="wizard.html">Buy Storage</a>
+                                <a class="nav-link" href="wizard.html">Buy Acronis Backup</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse"  aria-expanded="false" aria-controls="collapseFlows">
+                            <div class="nav-link-icon"><i data-feather="mail"></i></div>
+                            Mail 
+                            <span class="badge badge-primary-soft text-primary ml-auto">New</span>
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" aria-expanded="false" aria-controls="collapseFlows">
+                            <div class="nav-link-icon"><i data-feather="cloud"></i></div>
+                            Web Hosting
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse"  aria-expanded="false" aria-controls="collapseFlows">
+                            <div class="nav-link-icon"><i data-feather="upload-cloud"></i></div>
+                            Rapid Deploy servers
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse"  aria-expanded="false" aria-controls="collapseFlows">
+                            <div class="nav-link-icon"><i data-feather="server"></i></div>
+                            Servers
+                            <span class="badge badge-primary-soft text-primary ml-auto">Updated</span>
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse" data-target="#collapseComponents" aria-expanded="false" aria-controls="collapseComponents">
+                            <div class="nav-link-icon"><i data-feather="package"></i></div>
+                            More
+                            <div class="sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                        </a>
+                        <div class="collapse" id="collapseComponents" data-parent="#accordionSidenav">
+                            <nav class="sidenav-menu-nested nav">
+                                <a class="nav-link" href="#">DNS Manager</a>
+                                <a class="nav-link" href="#">Licences</a>
+                                <a class="nav-link" href="#">SSL</a>
+                                <a class="nav-link" href="#">Affiliate System</a>
+                            </nav>
+                        </div>
+                        <a class="nav-link collapsed" href="javascript:void(0);" data-toggle="collapse"  aria-expanded="false" >
+                            <div class="nav-link-icon"><i data-feather="credit-card"></i></div>
+                            Billing 
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        <a class="nav-link collapsed" href="javascript:void(0);" aria-expanded="false" aria-controls="collapseFlows">
+                            <div class="nav-link-icon"><i data-feather="settings"></i></div>
+                            Settings 
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                        <a class="nav-link collapsed" href="javascript:void(0);" aria-expanded="false" aria-controls="collapseFlows">
+                            <div class="nav-link-icon"><i data-feather="phone"></i></div>
+                            Support
+                            <div class="sidenav-collapse-arrow"></div>
+                        </a>
+                    </div>
+                </div>
+                <div class="sidenav-footer">
+                    <div class="sidenav-footer-content">
+                        <div class="sidenav-footer-subtitle">Logged in as:</div>
+                        <div class="sidenav-footer-title">Bukhosi Moyo</div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+        <div id="layoutSidenav_content">
+            <main>
+                <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+                    <div class="container">
+                        <div class="page-header-content pt-4">
+                            <div class="row align-items-center justify-content-between">
+                                <div class="col-auto mt-4">
+                                    <h1 class="page-header-title">
+                                        <div class="page-header-icon"><i data-feather="activity"></i></div>
+                                        Welcome Bukhosi,
+                                    </h1>
+                                    <div class="page-header-subtitle">From here yo can edit your website and manage your Hosting & domains.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </header>
+                <!-- Main page content-->
+                <div class="container mt-n10 mb-4">
+                    <div class="row">
+                        <div class="col-lg-4 mb-4">
+                            <div class="card bg-success border-0">
+                                <div class="card-body">
+                                    <div class="mb-4">
+                                        <h5 class="text-white-50"><span class="display-6 text-white"> <strong> ( 2 ) </strong></span>Domains</h5>
+                                        <span class="text-white-50">symaxx.com</span>
+                                    </div>
+                                    <a href="#" class="display-6 text-white" >
+                                        View Domains
+                                    </a>
+                                    <span class="badge badge-pill badge-primary ml-3" style="font-weight: 700;">Buy More </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4">
+                            <div class="card bg-primary border-0">
+                                <div class="card-body">
+                                    <div class="mb-4">
+                                        <h5 class="text-white-50"><span class="display-6 text-white"> <strong> ( 1 ) </strong></span>Web Hosting</h5>
+                                        <span class="text-white-50">symaxx.com</span>
+                                    </div>
+                                    <a href="#" class="display-6 text-white" >
+                                        View Web Hosting
+                                    </a>
+                                    <span class="badge badge-pill badge-primary-soft ml-3 " style="font-weight: 700;" >Buy More</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 mb-4">
+                            <div class="card bg-black border-0">
+                                <div class="card-body">
+                                    <div class="mb-4">
+                                        <h5 class="text-white-50"><span class="display-6 text-white"> <strong> ( 1 ) </strong></span>Vps</h5>
+                                        <span class="text-white-50">bukhosimoyo.com</span>
+                                    </div>
+                                    <a href="#" class="display-6 text-white" >
+                                        View Domains
+                                    </a>
+                                    <span class="badge badge-pill badge-primary ml-3" style="font-weight: 700;">Buy Now</span>
+                                </div>
+                            </div>
+                        </div>                            
+                    </div>
+                    <!-- Example Colored Cards for Dashboard Demo-->
+                    <!-- Example Charts for Dashboard Demo-->
+                    <div class="row">
+                        <div class="col-xl-6 mb-4">
+                            <div class="card card-header-actions h-100">
+                                <div class="card-header">
+                                    Affiliate Earnings Breakdown
+                                    <div class="dropdown no-caret">
+                                        <button class="btn btn-transparent-dark btn-icon dropdown-toggle" id="areaChartDropdownExample" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="text-gray-500" data-feather="more-vertical"></i></button>
+                                        <div class="dropdown-menu dropdown-menu-right animated--fade-in-up" aria-labelledby="areaChartDropdownExample">
+                                            <a class="dropdown-item" href="#!">Last 12 Months</a>
+                                            <a class="dropdown-item" href="#!">Last 30 Days</a>
+                                            <a class="dropdown-item" href="#!">Last 7 Days</a>
+                                            <a class="dropdown-item" href="#!">This Month</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#!">Custom Range</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area"><canvas id="myAreaChart" width="100%" height="30"></canvas></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 mb-4">
+                            <div class="card card-header-actions h-100">
+                                <div class="card-header">
+                                    Monthly Affiliate Revenue
+                                    <div class="dropdown no-caret">
+                                        <button class="btn btn-transparent-dark btn-icon dropdown-toggle" id="areaChartDropdownExample" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="text-gray-500" data-feather="more-vertical"></i></button>
+                                        <div class="dropdown-menu dropdown-menu-right animated--fade-in-up" aria-labelledby="areaChartDropdownExample">
+                                            <a class="dropdown-item" href="#!">Last 12 Months</a>
+                                            <a class="dropdown-item" href="#!">Last 30 Days</a>
+                                            <a class="dropdown-item" href="#!">Last 7 Days</a>
+                                            <a class="dropdown-item" href="#!">This Month</a>
+                                            <div class="dropdown-divider"></div>
+                                            <a class="dropdown-item" href="#!">Custom Range</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-bar"><canvas id="myBarChart" width="100%" height="30"></canvas></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <!-- Pricing columns example-->
+                        <div class="pricing-columns">
+                            <div class="row justify-content-center">
+                                <!-- Pricing column 1-->
+                                <div class="col-xl-4 col-lg-6 mb-4 mb-xl-0">
+                                    <div class="card h-100">
+                                        <div class="card-body text-center p-5">
+                                            <img class="img-fluid mb-5" src="{% static 'assets/img/freepik/data-report-pana.svg' %}" />
+                                            <h4>Unlimited Web Hosting</h4>
+                                            <p class="mb-4">The cPanel web hosting package with all the features you need to run your WordPress, Ecommerce, Forum, Business or any other website.</p>
+                                            <a class="btn btn-primary btn-sm py-2 px-3" href="#!">Continue</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Pricing column 2-->
+                                <div class="col-xl-4 col-lg-6 mb-4 mb-xl-0">
+                                    <div class="card h-100">
+                                        <div class="card-header bg-transparent">
+                                            <span class="badge badge-primary-soft text-primary badge-pill py-2 px-3 mb-2">Team</span>
+                                            <div class="pricing-columns-price">
+                                                US$4
+                                                <span>/month (3 year)</span>
+                                            </div>
+                                        </div>
+                                        <div class="card-body p-0">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item">
+                                                    <i class="text-primary mr-2" data-feather="check-circle"></i>
+                                                    Unlimited Ultra Storage
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <i class="text-primary mr-2" data-feather="check-circle"></i>
+                                                    Unlimited Email Accounts
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <i class="text-primary mr-2" data-feather="check-circle"></i>
+                                                    30 Day Money Back Guarantee
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <i class="text-primary mr-2" data-feather="check-circle"></i>
+                                                    Free Website Migration
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <i class="text-primary mr-2" data-feather="check-circle"></i>
+                                                    Free SSL Certificates
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <i class="text-primary mr-2" data-feather="check-circle"></i>
+                                                    Intershield Protection
+                                                </li>
+                                                <li class="list-group-item">
+                                                        <i class="text-primary   mr-2" data-feather="check-circle"></i>
+                                                        Priority customer support
+                                                    </li>
+                                            </ul>
+                                        </div>
+                                        <a class="card-footer d-flex align-items-center justify-content-between text-primry bg-primary-soft text-decoration-none" href="#!">
+                                            Buy Now!
+                                            <i data-feather="arrow-right"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <!-- Pricing column 3-->
+                                <div class="col-xl-4 col-lg-6">
+                                    <div class="pricing-table">
+                                        <div class="card h-100">
+                                            <div class="card-header bg-transparent">
+                                                <span class="badge badge-success-soft text-success badge-pill py-2 px-3 mb-2">Organization</span>
+                                                <div class="pricing-columns-price">
+                                                    US$5
+                                                    <span>/month</span>
+                                                </div>
+                                            </div>
+                                            <div class="card-body p-0">
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item">
+                                                        <i class="text-success mr-2" data-feather="check-circle"></i>
+                                                        Unlimited Ultra Storage
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="text-success mr-2" data-feather="check-circle"></i>
+                                                        Unlimited Email Accounts
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="text-success mr-2" data-feather="check-circle"></i>
+                                                        30 Day Money Back Guarantee
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="text-success mr-2" data-feather="check-circle"></i>
+                                                        Free Website Migration
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="text-success mr-2" data-feather="check-circle"></i>
+                                                        Free SSL Certificates
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="text-success mr-2" data-feather="check-circle"></i>
+                                                        Intershield Protection
+                                                    </li>
+                                                    <li class="list-group-item">
+                                                        <i class="text-success mr-2" data-feather="check-circle"></i>
+                                                        Priority customer support
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <a class="card-footer d-flex align-items-center justify-content-between text-success bg-success-soft text-decoration-none" href="#!">
+                                                Learn More!
+                                                <i data-feather="arrow-right"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+            <footer class="footer mt-auto footer-light">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 small">Copyright &#xA9; Interserver 2020</div>
+                        <div class="col-md-6 text-md-right small">
+                            <a href="#!">
+                                <span class="text-primary">Do not sell my info</span>
+                            </a>
+                            &#xB7;
+                            <a href="#!">Privacy Policy</a>
+                            &#xB7;
+                            <a href="#!">Terms &amp; Conditions</a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+{% endblock content %}
